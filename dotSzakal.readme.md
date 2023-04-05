@@ -1,4 +1,11 @@
-# my-dotfiles
+# This is to remind myself on how to use this repository.
+
+The solution came from here:
+<https://news.ycombinator.com/item?id=11071754>
+and here:
+<https://www.atlassian.com/git/tutorials/dotfiles>
+and here:
+<https://github.com/Siilwyn/my-dotfiles>
 
 ## Setup
 ```sh
