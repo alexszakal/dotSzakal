@@ -16,9 +16,9 @@ dotconfig remote add origin git@github.com:alexszakal/dotSzakal.git
 
 ## Replication
 ```sh
-git clone --separate-git-dir=$HOME/.dotSzakal https://github.com/alexszakal/dotSzakal.git my-dotfiles-tmp
-rsync --recursive --verbose --exclude '.git' my-dotfiles-tmp/ $HOME/
-rm --recursive my-dotfiles-tmp
+echo ".my-dotfiles" >> .gitignore
+git clone --bare git@github.com:alexszakal/dotSzakal.git $HOME/.my-dotfiles
+dotconfig checkout
 ```
 
 ## Configuration
