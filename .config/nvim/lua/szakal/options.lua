@@ -37,12 +37,12 @@ vim.opt.numberwidth = 4                         -- set number column width to 2 
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false                            -- display lines as one long line
 vim.opt.scrolloff = 8                           -- is one of my fav
-vim.opt.sidescrolloff = 16 
+vim.opt.sidescrolloff = 16
 vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 
 vim.opt.shortmess:append "c"
 vim.opt.isfname:append("@-@")
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
+vim.cmd "set whichwrap+=<,>,[,],h,l"            -- This is an example on how to use vimscript in lua. This adds keystrokes that allow linewrapping movements
+vim.cmd [[set iskeyword+=-]]                    -- Adds '-' to keywords... 
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
