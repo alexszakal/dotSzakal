@@ -7,7 +7,7 @@ autocmd("BufWinEnter", {
     group = aszakal_Fugitive,
     pattern = "*",
     callback = function()
-        print("help", vim.bo.ft)
+        -- print("help", vim.bo.ft)
         if vim.bo.ft ~= "fugitive" then
             return
         end
