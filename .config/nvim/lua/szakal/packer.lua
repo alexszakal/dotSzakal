@@ -53,6 +53,19 @@ return require('packer').startup(function(use)
     --Git Fugitive
     use('tpope/vim-fugitive')
 
+    -- Packages for completion
+    use('hrsh7th/nvim-cmp')        -- The completion plugin
+         -- Completion Sources for nvim-cmp
+    use('hrsh7th/cmp-nvim-lsp')    -- 
+    use('hrsh7th/cmp-buffer')      -- Buffer completion source
+    use('hrsh7th/cmp-path')        -- Path completion source
+    use('hrsh7th/cmp-cmdline')     -- Commandline completion source
+    use('hrsh7th/cmp-nvim-lua')    -- Nvim lua completion source
+
+    --Snippets source for nvim-cmp
+    use('L3MON4D3/LuaSnip')             -- Snippet engine
+    use('rafamadriz/friendly-snippets') -- A bunch of snippets to use
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
