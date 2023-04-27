@@ -10,14 +10,14 @@ and here:
 ## Setup
 ```sh
 git init --bare $HOME/.dotSzakal
-alias dotconfig='git --git-dir=$HOME/.my-dotfiles/ --work-tree=$HOME'
+alias dotconfig='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
 dotconfig remote add origin git@github.com:alexszakal/dotSzakal.git
 ```
 
 ## Replication
 ```sh
-echo ".my-dotfiles" >> .gitignore
-git clone --bare git@github.com:alexszakal/dotSzakal.git $HOME/.my-dotfiles
+echo ".dotSzakal" >> .gitignore
+git clone --bare git@github.com:alexszakal/dotSzakal.git $HOME/.dotSzakal
 dotconfig checkout
 ```
 
