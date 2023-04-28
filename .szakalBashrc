@@ -1,2 +1,7 @@
 
 alias dotconfig='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
+
+# Settings for bash history
+HISTSIZE=3000            #Size of the history buffer
+HISTFILESIZE=10000000    #Size of the history file
+HISTTIMEFORMAT="%F %T "   #Report date and time in history output
