@@ -1,0 +1,2 @@
+
+alias dotconfig='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
