@@ -2,6 +2,7 @@
 local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    print(fn.stdpath('data'))
     if fn.empty(fn.glob(install_path)) > 0 then
         fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
         vim.cmd [[packadd packer.nvim]]
@@ -28,17 +29,17 @@ return require('packer').startup(function(use)
     use({ 'rose-pine/neovim', as = 'rose-pine' })
 
     -- Trouble
-    use({
-        "folke/trouble.nvim",
-        config = function()
-            require("trouble").setup {
-                icons = false,
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
-    })
+--    use({
+--        "folke/trouble.nvim",
+--        config = function()
+--            require("trouble").setup {
+--                icons = false,
+--                -- your configuration comes here
+--                -- or leave it empty to use the default settings
+--                -- refer to the configuration section below
+--            }
+--        end
+--    })
 
     --Treesitter 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -56,43 +57,18 @@ return require('packer').startup(function(use)
     -- Packages for completion
     use('hrsh7th/nvim-cmp')        -- The completion plugin
          -- Completion Sources for nvim-cmp
-    use('hrsh7th/cmp-nvim-lsp')    -- 
+    use('hrsh7th/cmp-nvim-lsp')    -- LSP completions for cmp
     use('hrsh7th/cmp-buffer')      -- Buffer completion source
     use('hrsh7th/cmp-path')        -- Path completion source
     use('hrsh7th/cmp-cmdline')     -- Commandline completion source
-    use('hrsh7th/cmp-nvim-lua')    -- Nvim lua completion source
-
-    --Snippets source for nvim-cmp
+    use('hrsh7th/cmp-nvim-lua')    -- Nvim specific lua completion source
+        --Snippets source for nvim-cmp
     use('L3MON4D3/LuaSnip')             -- Snippet engine
     use('rafamadriz/friendly-snippets') -- A bunch of snippets to use
 
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        requires = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {                                      -- Optional
-            'williamboman/mason.nvim',
-            run = function()
-                pcall(vim.cmd, 'MasonUpdate')
-            end,
-        },
-        {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-        -- Autocompletion
-        {'hrsh7th/nvim-cmp'},         -- Required
-        {'hrsh7th/cmp-nvim-lsp'},     -- Required
-        {'hrsh7th/cmp-buffer'},       -- Optional
-        {'hrsh7th/cmp-path'},         -- Optional
-        {'saadparwaiz1/cmp_luasnip'}, -- Optional
-        {'hrsh7th/cmp-nvim-lua'},     -- Optional
-
-        -- Snippets
-        {'L3MON4D3/LuaSnip'},             -- Required
-        {'rafamadriz/friendly-snippets'}, -- Optional
-        }
-    }
+    use "neovim/nvim-lspconfig" -- enable LSP
+    use "williamboman/mason.nvim" -- simple to use language server installer
+    use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
 
     use('ThePrimeagen/vim-be-good')
 
