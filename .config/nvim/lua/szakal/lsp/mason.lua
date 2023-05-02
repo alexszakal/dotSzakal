@@ -1,6 +1,6 @@
 local servers = {
   "lua_ls",
-	"pyright",
+	"pylsp",
 }
 
 local settings = {
