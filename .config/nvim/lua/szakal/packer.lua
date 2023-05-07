@@ -70,6 +70,9 @@ return require('packer').startup(function(use)
     use "williamboman/mason.nvim" -- simple to use language server installer
     use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
 
+    -- Autopairs
+    use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+
     use('ThePrimeagen/vim-be-good')
 
     if packer_bootstrap then
