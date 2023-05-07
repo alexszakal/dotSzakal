@@ -73,6 +73,10 @@ return require('packer').startup(function(use)
     -- Autopairs
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 
+    -- Commenting
+    use "numToStr/Comment.nvim" -- Easily comment stuff
+    use 'JoosepAlviste/nvim-ts-context-commentstring' -- Context aware connemtstring using treesitter
+
     use('ThePrimeagen/vim-be-good')
 
     if packer_bootstrap then
