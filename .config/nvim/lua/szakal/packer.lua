@@ -41,6 +41,10 @@ return require('packer').startup(function(use)
 --        end
 --    })
 
+    --NvimTree
+    use 'kyazdani42/nvim-web-devicons'
+    use 'kyazdani42/nvim-tree.lua'
+
     --Treesitter 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use("nvim-treesitter/nvim-treesitter-context"); -- context.vim alternative
@@ -53,6 +57,9 @@ return require('packer').startup(function(use)
 
     --Git Fugitive
     use('tpope/vim-fugitive')
+
+    --GitSigns
+    use('lewis6991/gitsigns.nvim')
 
     -- Packages for completion
     use('hrsh7th/nvim-cmp')        -- The completion plugin
