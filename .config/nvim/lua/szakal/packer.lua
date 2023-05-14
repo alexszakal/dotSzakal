@@ -86,6 +86,9 @@ return require('packer').startup(function(use)
 
     use('ThePrimeagen/vim-be-good')
 
+    --Bufferline plugin
+    use "akinsho/bufferline.nvim"
+
     if packer_bootstrap then
         require('packer').sync()
     end
