@@ -1,6 +1,7 @@
 local servers = {
   "lua_ls",
 	"pylsp",
+    "clangd",
 }
 
 local settings = {
