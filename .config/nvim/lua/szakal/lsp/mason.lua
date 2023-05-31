@@ -1,10 +1,10 @@
 local servers = {
-  "lua_ls",
+    "lua_ls",
 	"pylsp",
     "clangd",
 }
 
-local settings = {
+local settings = {  -- Settings for Mason itself.
 	ui = {
 		border = "none",
 		icons = {
