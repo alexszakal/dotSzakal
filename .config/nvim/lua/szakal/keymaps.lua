@@ -25,7 +25,11 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+--NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+
+--SymbolTree
+keymap("n", "<leader>t", ":SymbolsOutline<CR>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)

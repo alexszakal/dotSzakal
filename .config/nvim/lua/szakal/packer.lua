@@ -89,6 +89,9 @@ return require('packer').startup(function(use)
     --Bufferline plugin
     use "akinsho/bufferline.nvim"
 
+    --Symbols-outline
+    use "simrat39/symbols-outline.nvim"
+
     if packer_bootstrap then
         require('packer').sync()
     end
