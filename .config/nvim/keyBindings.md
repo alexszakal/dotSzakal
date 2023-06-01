@@ -8,6 +8,11 @@
 ## LSP
 <K> Hover (get some info about the item under cursor)
 <gl> Open diagnostics info
+<gD> Go to Declaration
+<gd> Go to Definition
+<gi> Go to Implementation
+<gr> References
+<leader>rn Rename in the current buffer
 
 ## SymbolsOutline
 <leader>t Toogle Symbols Outline 
