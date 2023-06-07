@@ -92,6 +92,12 @@ return require('packer').startup(function(use)
     --Symbols-outline
     use "simrat39/symbols-outline.nvim"
 
+    -- Debugging
+    use "mfussenegger/nvim-dap"
+    use "rcarriga/nvim-dap-ui"
+    use "theHamsta/nvim-dap-virtual-text"
+    use "nvim-telescope/telescope-dap.nvim"
+
     if packer_bootstrap then
         require('packer').sync()
     end
