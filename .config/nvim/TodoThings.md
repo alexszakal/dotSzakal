@@ -2,7 +2,6 @@
 - Rename across files
 - Jump to definition
 - compile debug and release without leaving nvim
-- nvim-dap Debugging
 - Testing: probably https://github.com/nvim-neotest/neotest
 
 ## Try out
