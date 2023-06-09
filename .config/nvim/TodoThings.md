@@ -1,11 +1,11 @@
 ## Must work
 - Rename across files
 - Jump to definition
-- compile debug and release without leaving nvim
+- generate and compile without leaving nvim -> Civitasv/cmake-tools.nvim
 - Testing: probably https://github.com/nvim-neotest/neotest
 
 ## Try out
-- Lualine or any kind of fancy statusbar
+- Lualine/airline or any kind of fancy statusbar
 - VidocqH/lsp-lens.nvim Display function references in virtual text
 - ray-x/lsp_signature.nvim Signature help while typing.
 - clang-tidy Using null-ls
