@@ -99,7 +99,7 @@ return require('packer').startup(function(use)
     use "nvim-telescope/telescope-dap.nvim"
 
     --CMAKE support
-    use "Civitasv/cmake-tools.nvim"
+--    use "Civitasv/cmake-tools.nvim"
 
     if packer_bootstrap then
         require('packer').sync()
