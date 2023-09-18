@@ -48,7 +48,8 @@ return require('packer').startup(function(use)
     --Treesitter 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use("nvim-treesitter/nvim-treesitter-context"); -- context.vim alternative
-    use('HiPhish/nvim-ts-rainbow2') --Rainbow parentheses
+    use('HiPhish/rainbow-delimiters.nvim') --Rainbow parentheses
+
     --Harpoon
     use('theprimeagen/harpoon')
 
