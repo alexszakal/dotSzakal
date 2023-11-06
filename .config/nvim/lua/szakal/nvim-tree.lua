@@ -126,7 +126,7 @@ nvim_tree.setup {
     view = {
         width = 50,
     --    height = 30,
-        hide_root_folder = false,
+    --    hide_root_folder = false, -- Deprecated
         side = "left",
    --     auto_resize = true,
         number = false,
@@ -151,6 +151,7 @@ nvim_tree.setup {
     renderer = {
         highlight_git = true,
         root_folder_modifier = ":t",
+        root_folder_label = true,
         icons = {
             show = {
                 file = true,
