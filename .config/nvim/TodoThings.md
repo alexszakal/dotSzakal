@@ -1,6 +1,6 @@
 ## Must work
-- Rename across files
-- Jump to definition
+- Rename across files READY
+- Jump to definition READY
 - generate and compile without leaving nvim -> Civitasv/cmake-tools.nvim
 - Testing: probably https://github.com/nvim-neotest/neotest
 
@@ -8,6 +8,8 @@
 - Lualine/airline or any kind of fancy statusbar
 - VidocqH/lsp-lens.nvim Display function references in virtual text
 - ray-x/lsp_signature.nvim Signature help while typing.
+- ray-x/navigator.lua Code analysis and navigation
+- NeogitOrg/neogit Git plugin
 - clang-tidy Using null-ls
 - cpplint linter additionally to clangd
 - ALE? asynchronous linting engine
