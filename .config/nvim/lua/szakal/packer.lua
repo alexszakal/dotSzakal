@@ -99,6 +99,8 @@ return require('packer').startup(function(use)
     use "theHamsta/nvim-dap-virtual-text"
     use "nvim-telescope/telescope-dap.nvim"
 
+    use "smjonas/inc-rename.nvim"
+
     --CMAKE support
 --    use "Civitasv/cmake-tools.nvim"
 

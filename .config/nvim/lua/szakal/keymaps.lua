@@ -134,3 +134,10 @@ vim.keymap.set("n", "<leader>du", ":lua require'dapui'.toggle()<CR>")
 
 -- GitSigns
 vim.keymap.set("n", "<F4>", ":Gitsigns toggle_current_line_blame<CR>")
+
+-- Inc-rename
+vim.keymap.set("n", "<leader>ri", function()
+                                      return ":IncRename " .. vim.fn.expand("<cword>")
+                                  end,
+                                  { expr = true }
+              )
