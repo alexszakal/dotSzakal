@@ -10,8 +10,11 @@
 - ray-x/lsp_signature.nvim Signature help while typing.
 - ray-x/navigator.lua Code analysis and navigation
 - NeogitOrg/neogit Git plugin
+- vimagit Git plugin
 - clang-tidy Using null-ls
 - cpplint linter additionally to clangd
 - ALE? asynchronous linting engine
 - Be able to close Nvim decently without too much zz or :q
 - Save the state when quiting nvim, open same thigs at next startup
+- Try changing symbolsOutline to tagbar ( with Universal Ctags?? )
+- Try changing nvim-tree with nerdtree? 
