@@ -101,6 +101,14 @@ return require('packer').startup(function(use)
 
     use "smjonas/inc-rename.nvim"
 
+    --Neogit git integration
+    use { "NeogitOrg/neogit",
+        requires = { {'nvim-lua/plenary.nvim'},
+                     --[[ {"nvim-telescope/telescope.nvim"}, ]]
+                     {"sindrets/diffview.nvim"},
+                     {"ibhagwan/fzf-lua"}}
+        }
+
     --CMAKE support
 --    use "Civitasv/cmake-tools.nvim"
 
