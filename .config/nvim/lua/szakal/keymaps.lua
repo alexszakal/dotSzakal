@@ -133,7 +133,21 @@ vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 vim.keymap.set("n", "<leader>du", ":lua require'dapui'.toggle()<CR>")
 
 -- GitSigns
-vim.keymap.set("n", "<F4>", ":Gitsigns toggle_current_line_blame<CR>")
+-- vim.keymap.set("n", "<F4>", ":Gitsigns toggle_current_line_blame<CR>")
+local gs = require("gitsigns")
+vim.keymap.set('n', '<leader>hs', gs.stage_hunk)
+vim.keymap.set('n', '<leader>hr', gs.reset_hunk)
+vim.keymap.set('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+vim.keymap.set('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+vim.keymap.set('n', '<leader>hS', gs.stage_buffer)
+vim.keymap.set('n', '<leader>hu', gs.undo_stage_hunk)
+vim.keymap.set('n', '<leader>hR', gs.reset_buffer)
+vim.keymap.set('n', '<leader>hp', gs.preview_hunk)
+vim.keymap.set('n', '<leader>hb', function() gs.blame_line{full=true} end)
+vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame)
+vim.keymap.set('n', '<leader>hd', gs.diffthis)
+vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end)
+vim.keymap.set('n', '<leader>td', gs.toggle_deleted)
 
 -- Inc-rename
 vim.keymap.set("n", "<leader>ri", function()
