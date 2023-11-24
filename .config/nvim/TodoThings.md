@@ -18,3 +18,4 @@
 - Save the state when quiting nvim, open same thigs at next startup
 - Try changing symbolsOutline to tagbar ( with Universal Ctags?? )
 - Try changing nvim-tree with nerdtree? 
+- Try auto-sessions session manager (or any kind of session manager)
