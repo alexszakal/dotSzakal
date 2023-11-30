@@ -1,6 +1,6 @@
+require "szakal.packer"
 require "szakal.options"
 require "szakal.keymaps"
-require "szakal.packer"
 require "szakal.colorscheme"
 require "szakal.cmp"
 require "szakal.lsp"
