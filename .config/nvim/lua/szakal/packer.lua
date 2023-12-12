@@ -56,9 +56,6 @@ return require('packer').startup(function(use)
     --Undotree
     use('mbbill/undotree')
 
-    --Git Fugitive
-    use('tpope/vim-fugitive')
-
     --GitSigns
     use('lewis6991/gitsigns.nvim')
 
@@ -111,6 +108,9 @@ return require('packer').startup(function(use)
 
     --CMAKE support
 --    use "Civitasv/cmake-tools.nvim"
+
+    --Bufdelete: delete buffers without messing up things
+    use 'famiu/bufdelete.nvim'
 
     if packer_bootstrap then
         require('packer').sync()
