@@ -169,3 +169,6 @@ vim.keymap.set("n", "<leader>ri", function()
 
 -- Delete buffer without messing up windows, splits
 vim.keymap.set('n', '<leader>c', ":Bdelete <CR>")
+
+-- Open Neogit
+vim.keymap.ser('n', '<leader>ng', require('neogit').open())
