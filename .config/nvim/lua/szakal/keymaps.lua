@@ -171,4 +171,4 @@ vim.keymap.set("n", "<leader>ri", function()
 vim.keymap.set('n', '<leader>c', ":Bdelete <CR>")
 
 -- Open Neogit
-vim.keymap.ser('n', '<leader>ng', require('neogit').open())
+vim.keymap.set('n', '<leader>ng', ":lua require('neogit').open()<CR>")
