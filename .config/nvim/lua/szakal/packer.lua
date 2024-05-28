@@ -50,8 +50,12 @@ return require('packer').startup(function(use)
     use("nvim-treesitter/nvim-treesitter-context"); -- context.vim alternative
     use('HiPhish/rainbow-delimiters.nvim') --Rainbow parentheses
 
-    --Harpoon
-    use('theprimeagen/harpoon')
+    --Harpoon II
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
 
     --Undotree
     use('mbbill/undotree')
