@@ -7,30 +7,31 @@ and here:
 and here:
 <https://github.com/Siilwyn/my-dotfiles>
 
-## Setup
+## Setup a new repo of this type
 ```sh
 git init --bare $HOME/.dotSzakal
-alias dotconfig='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
-dotconfig remote add origin git@github.com:alexszakal/dotSzakal.git
+alias dcon='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
+dcon remote add origin git@github.com:alexszakal/dotSzakal.git
 ```
 
-## Replication
+## Replication to a fresh system
 ```sh
 echo ".dotSzakal" >> .gitignore
+alias dcon='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
 git clone --bare git@github.com:alexszakal/dotSzakal.git $HOME/.dotSzakal
-dotconfig checkout
+dcon checkout
 ```
 
 ## Configuration
 ```sh
-dotconfig config status.showUntrackedFiles no
-dotconfig remote set-url origin git@github.com:alexszakal/dotSzakal.git
+dcon config status.showUntrackedFiles no
+dcon remote set-url origin git@github.com:alexszakal/dotSzakal.git
 ```
 
 ## Usage
 ```sh
-dotconfig status
-dotconfig add .gitconfig
-dotconfig commit -m 'Add gitconfig'
-dotconfig push
+dcon status
+dcon add .gitconfig
+dcon commit -m 'Add gitconfig'
+dcon push
 ```
