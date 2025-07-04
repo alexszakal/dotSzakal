@@ -1,7 +1,10 @@
+-- Neovim already has the treesitter engine built in. 
+-- Nvim treesitter ships the constantly maintained parsers, queries and match them
 return{ 
     {
 	"nvim-treesitter/nvim-treesitter",
-	build=":TSUpdate",
+	build=":TSUpdate", -- TSUpdate command has to be called after package update by Lazy
+	branch="master",
 	config = function()
 	    require'nvim-treesitter.configs'.setup {
 		ensure_installed = { "c", "cpp", "cuda", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
