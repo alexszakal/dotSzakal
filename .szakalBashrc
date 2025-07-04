@@ -1,5 +1,6 @@
 
 alias dotconfig='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
+alias dconf='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
 
 # Settings for bash history
 HISTSIZE=3000            #Size of the history buffer
