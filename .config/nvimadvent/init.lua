@@ -88,11 +88,5 @@ end)
 -- DAP-UI
 --[[ vim.keymap.set("n", "<leader>du", ":lua require'dapui'.toggle()<CR>") ]]
 
--- Inc-rename
---[[ vim.keymap.set("n", "<leader>ri", function() ]]
---[[                                       return ":IncRename " .. vim.fn.expand("<cword>") ]]
---[[                                   end, ]]
---[[                                   { expr = true } ]]
---[[               ) ]]
-
 require("config.lazy")
+require("config.options")

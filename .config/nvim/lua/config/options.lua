@@ -1,4 +1,4 @@
--- :help options
+print("Hello from options!!!!!!!!!!!!!")
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 2                           -- more space in the neovim command line for displaying messages
@@ -45,4 +45,3 @@ vim.opt.isfname:append("@-@")
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"            -- This is an example on how to use vimscript in lua. This adds keystrokes that allow linewrapping movements
 vim.cmd [[set iskeyword+=-]]                    -- Adds '-' to keywords... 
-vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
