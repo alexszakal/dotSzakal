@@ -143,6 +143,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),    # ssh-askpass
         Match(wm_class="toolbar"),        # toolbars
         Match(wm_class="Yad"),            # yad boxes
+        Match(wm_class="fiji-Main"),            # yad boxes
         Match(title="branchdialog"),      # gitk
         Match(title='Confirmation'),      # tastyworks exit box
         Match(title='Qalculate!'),        # qalculate-gtk
@@ -155,14 +156,13 @@ floating_layout = layout.Floating(
 )
 
 layouts = [
+    layout.MonadTall(),
     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(),
-    floating_layout,
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -383,7 +383,7 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = False
-bring_front_click = False
+bring_front_click = True
 floats_kept_above = True
 cursor_warp = False
 
