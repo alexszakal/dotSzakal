@@ -126,6 +126,33 @@ for i in groups:
             #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+floating_layout = layout.Floating(
+    float_rules=[
+        # Run the utility of `xprop` to see the wm class and name of an X client.
+        *layout.Floating.default_float_rules,
+        Match(wm_class="confirmreset"),   # gitk
+        Match(wm_class="dialog"),         # dialog boxes
+        Match(wm_class="download"),       # downloads
+        Match(wm_class="error"),          # error msgs
+        Match(wm_class="file_progress"),  # file progress boxes
+        Match(wm_class='kdenlive'),       # kdenlive
+        Match(wm_class="makebranch"),     # gitk
+        Match(wm_class="maketag"),        # gitk
+        Match(wm_class="notification"),   # notifications
+        Match(wm_class='pinentry-gtk-2'), # GPG key password entry
+        Match(wm_class="ssh-askpass"),    # ssh-askpass
+        Match(wm_class="toolbar"),        # toolbars
+        Match(wm_class="Yad"),            # yad boxes
+        Match(title="branchdialog"),      # gitk
+        Match(title='Confirmation'),      # tastyworks exit box
+        Match(title='Qalculate!'),        # qalculate-gtk
+        Match(title="pinentry"),          # GPG key password entry
+        Match(title="tastycharts"),       # tastytrade pop-out charts
+        Match(title="tastytrade"),        # tastytrade pop-out side gutter
+        Match(title="tastytrade - Portfolio Report"), # tastytrade pop-out allocation
+        Match(wm_class="tasty.javafx.launcher.LauncherFxApp"), # tastytrade settings
+    ]
+)
 
 layouts = [
     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
@@ -134,7 +161,8 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
+    layout.MonadTall(),
+    floating_layout,
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -358,18 +386,7 @@ follow_mouse_focus = False
 bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
-floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
-    ]
-)
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
