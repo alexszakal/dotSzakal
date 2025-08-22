@@ -20,6 +20,18 @@ return {
             require('lspconfig').clangd.setup{capabilities=capabilities,
                 cmd={"clangd"}}
 
+            vim.lsp.config['basedpyright'] = {
+                settings = {
+                    basedpyright = {
+                        analysis = {
+                            typeCheckingMode = "standard", --"off", "basic", "standard", "strict", "recommended", "all"
+                        },
+                    },
+                }, 
+            }
+
+            vim.lsp.enable({'basedpyright', 'clangd'})
+
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('my.lsp', {}),
                 callback = function(args)
