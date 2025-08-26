@@ -1,3 +1,8 @@
+##Migrate
+- Debugging
+- Check keymaps
+- nvim options (options.lua)
+
 ## Must work
 - Rename across files READY
 - Jump to definition READY
