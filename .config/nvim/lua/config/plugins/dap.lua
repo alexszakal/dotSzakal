@@ -62,11 +62,36 @@ return {
         -- Fallback to system python
         return vim.fn.executable('python3') == 1 and 'python3' or 'python'
       end
-      
+
+      -- Helper function to find C++ executables
+      local function find_executables()
+        local build_dirs = { 'build', 'Build', 'cmake-build-debug', 'cmake-build-release', 'out' }
+        local executables = {}
+        
+        for _, build_dir in ipairs(build_dirs) do
+          local full_path = vim.fn.getcwd() .. '/' .. build_dir
+          if vim.fn.isdirectory(full_path) == 1 then
+            local handle = io.popen('find ' .. full_path .. ' -type f -executable 2>/dev/null')
+            if handle then
+              for file in handle:lines() do
+                -- Skip shared libraries and object files
+                if not file:match('%.so') and not file:match('%.a$') and not file:match('%.o$') and
+                   not file:match('CMakeFiles') and not file:match('%.cmake$') then
+                  table.insert(executables, file)
+                end
+              end
+              handle:close()
+            end
+          end
+        end
+        
+        return executables
+      end 
+
       -- Setup mason-dap
       require('mason').setup()
       require('mason-nvim-dap').setup({
-        ensure_installed = { 'debugpy' }, -- Add more debuggers as needed
+        ensure_installed = { 'debugpy', 'codelldb' }, -- Add more debuggers as needed
         automatic_setup = true,
         handlers = {
           function(config)
@@ -113,6 +138,141 @@ return {
                 args = { '-v' },
                 pythonPath = get_python_path,
                 console = 'integratedTerminal',
+              },
+            }
+            require('mason-nvim-dap').default_setup(config)
+          end,
+
+-- C++ handler
+          codelldb = function(config)
+            config.configurations = {
+              {
+                name = 'Launch (select executable)',
+                type = 'codelldb',
+                request = 'launch',
+                program = function()
+                  local executables = find_executables()
+                  if #executables == 0 then
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                  elseif #executables == 1 then
+                    return executables[1]
+                  else
+                    -- Use vim.ui.select for multiple executables
+                    local selected = nil
+                    vim.ui.select(executables, {
+                      prompt = 'Select executable to debug:',
+                      format_item = function(item)
+                        return vim.fn.fnamemodify(item, ':t') .. ' (' .. vim.fn.fnamemodify(item, ':h') .. ')'
+                      end,
+                    }, function(choice)
+                      selected = choice
+                    end)
+                    
+                    -- Fallback if selection fails
+                    return selected or vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                  end
+                end,
+                cwd = '${workspaceFolder}',
+                stopOnEntry = false,
+                args = function()
+                  local args_string = vim.fn.input('Arguments: ')
+                  if args_string == '' then
+                    return {}
+                  end
+                  return vim.split(args_string, " +")
+                end,
+              },
+              {
+                name = 'Launch with input',
+                type = 'codelldb',
+                request = 'launch',
+                program = function()
+                  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end,
+                cwd = '${workspaceFolder}',
+                stopOnEntry = false,
+                args = function()
+                  local args_string = vim.fn.input('Arguments: ')
+                  if args_string == '' then
+                    return {}
+                  end
+                  return vim.split(args_string, " +")
+                end,
+              },
+              {
+                name = 'Launch tests',
+                type = 'codelldb',
+                request = 'launch',
+                program = function()
+                  local executables = find_executables()
+                  local test_executables = {}
+                  
+                  -- Filter for test executables
+                  for _, exe in ipairs(executables) do
+                    local name = vim.fn.fnamemodify(exe, ':t'):lower()
+                    if name:match('test') or name:match('gtest') or name:match('catch') then
+                      table.insert(test_executables, exe)
+                    end
+                  end
+                  
+                  if #test_executables == 0 then
+                    return vim.fn.input('Path to test executable: ', vim.fn.getcwd() .. '/', 'file')
+                  elseif #test_executables == 1 then
+                    return test_executables[1]
+                  else
+                    local selected = nil
+                    vim.ui.select(test_executables, {
+                      prompt = 'Select test executable:',
+                      format_item = function(item)
+                        return vim.fn.fnamemodify(item, ':t')
+                      end,
+                    }, function(choice)
+                      selected = choice
+                    end)
+                    return selected or test_executables[1]
+                  end
+                end,
+                cwd = '${workspaceFolder}',
+                stopOnEntry = false,
+                args = function()
+                  local filter = vim.fn.input('Test filter (optional): ')
+                  if filter ~= '' then
+                    return { '--gtest_filter=' .. filter }
+                  end
+                  return {}
+                end,
+              },
+              {
+                name = 'Attach to process',
+                type = 'codelldb',
+                request = 'attach',
+                pid = function()
+                  local handle = io.popen('ps -eo pid,comm --no-headers')
+                  if not handle then
+                    return tonumber(vim.fn.input('PID: '))
+                  end
+                  
+                  local processes = {}
+                  for line in handle:lines() do
+                    local pid, name = line:match('%s*(%d+)%s+(.+)')
+                    if pid and name then
+                      table.insert(processes, { pid = pid, name = name, display = pid .. ': ' .. name })
+                    end
+                  end
+                  handle:close()
+                  
+                  local selected = nil
+                  vim.ui.select(processes, {
+                    prompt = 'Select process to attach to:',
+                    format_item = function(item)
+                      return item.display
+                    end,
+                  }, function(choice)
+                    selected = choice and tonumber(choice.pid)
+                  end)
+                  
+                  return selected or tonumber(vim.fn.input('PID: '))
+                end,
               },
             }
             require('mason-nvim-dap').default_setup(config)
