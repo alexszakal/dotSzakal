@@ -6,6 +6,7 @@ function own_on_attach(bufnr)
         end
 
         vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>" )
+        vim.keymap.set('n', 'a',     api.fs.create,                         opts('Create')) 
         -- Default mappings. Feel free to modify or remove as you wish.
         --
         -- BEGIN_DEFAULT_ON_ATTACH
