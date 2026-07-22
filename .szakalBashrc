@@ -1,3 +1,5 @@
+# Source this by adding the following at the end of .bashrc:
+# [ -f ~/.szakalBashrc ] && . ~/.szakalBashrc
 
 alias dotconfig='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
 alias dconf='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
