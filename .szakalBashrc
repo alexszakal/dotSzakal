@@ -8,3 +8,6 @@ alias dconf='git --git-dir=$HOME/.dotSzakal/ --work-tree=$HOME'
 HISTSIZE=3000            #Size of the history buffer
 HISTFILESIZE=10000000    #Size of the history file
 HISTTIMEFORMAT="%F %T "   #Report date and time in history output
+
+# Append the nvim starter scripts
+export PATH="$HOME/scripts/nvim:$PATH"
