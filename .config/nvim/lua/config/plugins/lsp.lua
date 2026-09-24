@@ -16,9 +16,12 @@ return {
             },
         },
         config = function()
+            -- Disable LSP client logging (~/.local/state/nvim/lsp.log); use "WARN" to keep problems only
+            vim.lsp.log.set_level("OFF")
+
             local capabilities = require('blink.cmp').get_lsp_capabilities()
-            require('lspconfig').clangd.setup{capabilities=capabilities,
-                cmd={"clangd"}}
+            vim.lsp.config('*', { capabilities = capabilities })
+            vim.lsp.config('clangd', { cmd = { "clangd" } })
 
             vim.lsp.config['basedpyright'] = {
                 settings = {
@@ -64,7 +67,7 @@ return {
                     end
 
                     -- KEYBINDINGS
-                    local opts = { buffer = bufnr, silent = true }
+                    local opts = { buffer = args.buf, silent = true }
                     vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
                     vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
                     vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
@@ -73,9 +76,9 @@ return {
                     vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
                     vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
                     vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
-                    vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
+                    vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
                     vim.keymap.set('n', "gl", function() vim.diagnostic.open_float() end, opts)
-                    vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
+                    vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
                     vim.keymap.set('n', '<leader>q', function() vim.diagnostic.setloclist() end, opts)
                     vim.keymap.set('n', '<leader>F', function() vim.lsp.buf.format() end, opts)
                 end,
