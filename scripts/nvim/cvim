@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# cvim - start Neovim with the C++/CUDA profile (~/.config/nvim-cpp).
+#
+# The profile layers on top of the core config in ~/.config/nvim, which is what
+# a plain "nvim" starts. NVIM_APPNAME also redirects the data, state and cache
+# directories, so this profile's plugins are fully isolated from the others.
+#
+# Usage: cvim [nvim arguments...]
+set -euo pipefail
+
+export NVIM_APPNAME=nvim-cpp
+exec nvim "$@"

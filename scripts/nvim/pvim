@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# pvim - start Neovim with the Python profile (~/.config/nvim-python).
+#
+# The profile layers on top of the core config in ~/.config/nvim, which is what
+# a plain "nvim" starts. NVIM_APPNAME also redirects the data, state and cache
+# directories, so this profile's plugins are fully isolated from the others.
+#
+# Usage: pvim [nvim arguments...]
+set -euo pipefail
+
+export NVIM_APPNAME=nvim-python
+exec nvim "$@"
