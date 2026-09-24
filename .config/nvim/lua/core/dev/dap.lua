@@ -1,7 +1,13 @@
+-- Debug Adapter Protocol.
+-- Loaded only when the active profile lists adapters in require("core").setup{ dap = {...} },
+-- so the LaTeX profile never downloads debugpy/codelldb.
 return {
   -- Core DAP plugin
   {
     'mfussenegger/nvim-dap',
+    enabled = function()
+      return #(require("core").opts.dap or {}) > 0
+    end,
     dependencies = {
       -- Mason integration
       'williamboman/mason.nvim',
@@ -91,7 +97,7 @@ return {
       -- Setup mason-dap
       require('mason').setup()
       require('mason-nvim-dap').setup({
-        ensure_installed = { 'debugpy', 'codelldb' }, -- Add more debuggers as needed
+        ensure_installed = require("core").opts.dap or {}, -- set per profile in its init.lua
         automatic_setup = true,
         handlers = {
           function(config)
