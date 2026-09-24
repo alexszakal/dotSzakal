@@ -1,7 +1,15 @@
 -- Prose-oriented settings, applied to LaTeX/markdown/text buffers only, so the
 -- core defaults (no wrap, no spell) stay intact for everything else.
 
-vim.opt.spelllang = { "en_us", "hu" }
+-- English ships with Neovim. Hungarian does not: adding "hu" unconditionally
+-- makes Neovim prompt "Cannot find spell file for hu - download?" on every
+-- buffer, so only enable it once a hu spell file is actually present.
+-- To add one:  see the Spell checking section of README.md
+local spelllang = { "en_us" }
+if #vim.fn.globpath(vim.o.runtimepath, "spell/hu*.spl", false, true) > 0 then
+    table.insert(spelllang, "hu")
+end
+vim.opt.spelllang = spelllang
 
 vim.api.nvim_create_autocmd("FileType", {
     desc = "Prose editing: soft wrap, spell check, wrap-aware motions",
